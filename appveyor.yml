@@ -3,7 +3,6 @@ image: Visual Studio 2017
 init:
     - git config --global core.autocrlf input
 
-clone_folder: E:\projects
 shallow_clone: true              
 
 matrix:
