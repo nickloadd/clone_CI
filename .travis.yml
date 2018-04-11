@@ -22,7 +22,7 @@ script:
     # скрипт сборки и тестирования проекта:
     - mkdir build
     - cd build
-    - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=amd64
+    - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU
     - cmake --build .
 
 deploy:
