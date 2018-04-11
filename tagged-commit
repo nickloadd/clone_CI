@@ -1,0 +1,5 @@
+git add --all
+git commit --message "release 1.0.0"
+git tag project-name-1.0.0
+git push
+git push origin project-name-1.0.0
