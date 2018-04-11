@@ -27,12 +27,11 @@ script:
 
 deploy:
     provider:     releases
-    file:         <package-file>
+    
+    file:         
+    - file1.pkg
+    
     skip_cleanup: true
-    overwrite:    true
-
-    api_key:
-        secure:   <encrypted-github-token>
 
     on:
         tags:     true
