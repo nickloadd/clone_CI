@@ -16,7 +16,7 @@ env:
 
 install:
     # скрипт настройки среды и установки зависимостей:
-    - source ci/travis/install-linux.sh
+    - source CI/travis/install-linux.sh
 
 script:
     # скрипт сборки и тестирования проекта:
