@@ -1,8 +1,41 @@
-language: cpp
-addons:
-  apt:
-    sources:
-      - george-edison55-precise-backports
-    packages:
-      - cmake-data
-      - cmake
+dist:     trusty    
+sudo:     required  
+
+language: cpp       
+                   
+os:
+    - linux
+
+compiler:
+    - gcc
+    - clang
+
+env:
+    - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+    - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+    - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+    - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+
+install:
+    # скрипт настройки среды и установки зависимостей:
+    - source ci/travis/install-$TRAVIS_OS_NAME.sh
+
+script:
+    # скрипт сборки и тестирования проекта:
+    - mkdir build
+    - cd build
+    - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU
+    - cmake --build .
+    - ctest --output-on-failure
+
+deploy:
+    provider:     releases
+    file:         <package-file>
+    skip_cleanup: true
+    overwrite:    true
+
+    api_key:
+        secure:   <encrypted-github-token>
+
+    on:
+        tags:     true
