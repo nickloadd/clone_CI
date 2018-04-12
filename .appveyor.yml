@@ -1,50 +1,43 @@
-image: Visual Studio 2015
-
-init:
-    - git config --global core.autocrlf input
-
-shallow_clone: true              
-
-matrix:
-    fast_finish: false           
-
-platform:
-    - x86
-
+image:
+- Visual Studio 2013
+- Visual Studio 2015
+- Visual Studio 2017
 configuration:
-    - Debug
-    - Release
-
+- Release
+- Debug
+platform:
+- x64
 environment:
-    matrix:
-        - TOOLCHAIN: msvc14
-        - TOOLCHAIN: msvc15
+  matrix:
+  - arch: Win64
+  # - arch: #does not work, Release|x64 not a valid target
+matrix:
+  fast_finish: true
 
-install:
-    # скрипт настройки среды и установки зависимостей:
-    - call ci\appveyor\set-env.bat %TOOLCHAIN% %PLATFORM%
-    
-build_script:
-    # скрипт сборки проекта:
-    - mkdir build
-    - cd build
-    - cmake .. %CMAKE_CONFIGURE_FLAGS%
-    - cmake --build . %CMAKE_BUILD_FLAGS%
+# skip unsupported combinations
+init:
+- set arch=
+- if "%arch%"=="Win64" ( set arch= Win64)
+- echo %arch%
+- echo %APPVEYOR_BUILD_WORKER_IMAGE%
+- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" ( set generator="Visual Studio 15 2017%arch%" )
+- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" ( set generator="Visual Studio 14 2015%arch%" )
+- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2013" ( set generator="Visual Studio 12 2013%arch%" )
+- echo %generator%
 
-artifacts:
-    - path: <local-package-path>
-      name: package_name
-
-deploy:
-    # выкладываем tagged-коммиты на GitHub Releases:
-    description: '$(APPVEYOR_REPO_TAG_NAME)'
-    provider: GitHub
-
-    auth_token:
-        secure: <encrypted-github-token>
-
-    artifact: package_name
-    force_update: true
-
-    on:
-        appveyor_repo_tag: true
+before_build:
+- cmd: |-
+    mkdir build
+    cd build
+    cmake --version
+    cmake .. -G %generator%
+build:
+  project: c:\projects\cmake-init\build\template.sln
+  verbosity: minimal
+  parallel: true
+only_commits:
+  files:
+    - CMakeLists.txt
+    - appveyor.yml
+    - source/
+    - cmake/
