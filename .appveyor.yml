@@ -17,9 +17,8 @@ configuration:
 
 environment:
     matrix:
-        - TOOLCHAIN: msvc10
-        - TOOLCHAIN: msvc12
         - TOOLCHAIN: msvc14
+        - TOOLCHAIN: msvc15
 
 install:
     # скрипт настройки среды и установки зависимостей:
