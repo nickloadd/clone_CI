@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.11)
-if ("${TARGET_CPU}" STREQUAL "amd64")
+if ("${TARGET_CPU}" STREQUAL "x64")
     set (CMAKE_SIZEOF_VOID_P 8)
 
     set_property (GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS TRUE)
