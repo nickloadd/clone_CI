@@ -40,12 +40,12 @@ set CMAKE_GENERATOR=Visual Studio 15 2017
 shift
 goto :loop
 
-:x86
-set TARGET_CPU=x86
-set CMAKE_GENERATOR_SUFFIX=
-set OPENSSL_DIR=C:\OpenSSL-Win32
-shift
-goto :loop
+#:x86
+#set TARGET_CPU=x86
+#set CMAKE_GENERATOR_SUFFIX=
+#set OPENSSL_DIR=C:\OpenSSL-Win32
+#shift
+#goto :loop
 
 :amd64
 set TARGET_CPU=amd64
