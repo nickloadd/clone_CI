@@ -17,9 +17,9 @@ configuration:
 
 environment:
     matrix:
+        - TOOLCHAIN: msvc10
         - TOOLCHAIN: msvc12
-        - TOOLCHAIN: msvc15
-        #APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+        - TOOLCHAIN: msvc14
 
 install:
     # скрипт настройки среды и установки зависимостей:
