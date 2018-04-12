@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.11)
+cmake_minimum_required(VERSION 3.3)
 if ("${TARGET_CPU}" STREQUAL "amd64")
     set (CMAKE_SIZEOF_VOID_P 8)
 
