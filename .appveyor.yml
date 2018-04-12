@@ -9,7 +9,6 @@ matrix:
     fast_finish: false           
 
 platform:
-    - x64
     - x86
 
 configuration:
