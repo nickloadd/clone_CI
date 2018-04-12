@@ -9,7 +9,7 @@ matrix:
     fast_finish: false           
 
 platform:
-    - x64
+    - amd64
 
 configuration:
     - Debug
