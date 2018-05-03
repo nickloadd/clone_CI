@@ -1,21 +1,46 @@
-
-
-version: 1.0.{build}
-
 image: Visual Studio 2015
 
-configuration: Debug, Release
+init:
+    - git config --global core.autocrlf input
 
-platform: Any CPU
+shallow_clone: true              
+
+matrix:
+    fast_finish: false           
+
+platform:
+    - x86
+
+configuration:
+    - Debug
+    - Release
 
 environment:
     matrix:
         - TOOLCHAIN: msvc14
         - TOOLCHAIN: msvc15
+    
+build_script:
+    # скрипт сборки проекта:
+    - mkdir build
+    - cd build
+    - cmake .. 
+    - cmake --build . 
 
-build:
+artifacts:
+    - path: <local-package-path>
+      name: package_name
 
-  parallel: true
+deploy:
+    # выкладываем tagged-коммиты на GitHub Releases:
+    description: '$(APPVEYOR_REPO_TAG_NAME)'
+    provider: GitHub
 
-  verbosity: minimal
+    auth_token:
+        secure: <encrypted-github-token>
 
+    artifact: package_name
+    force_update: true
+
+    on:
+        appveyor_repo_tag: true
