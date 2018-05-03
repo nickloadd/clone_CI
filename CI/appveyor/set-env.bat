@@ -7,8 +7,15 @@ if /i "%1" == "msvc10" goto :msvc10
 if /i "%1" == "msvc12" goto :msvc12
 if /i "%1" == "msvc14" goto :msvc14
 if /i "%1" == "msvc15" goto :msvc15
-if /i "%1" == "x86_64" goto :x86_64-pc-windows-msvc
-if /i "%1" == "x64" goto :x86_64-pc-windows-msvc
+f /i "%1" == "x86" goto :x32
+if /i "%1" == "x86" goto :x32
+if /i "%1" == "i386" goto :x32
+if /i "%1" == "x86" goto :x86
+if /i "%1" == "i386" goto :x86
+if /i "%1" == "amd64" goto :amd64
+if /i "%1" == "x86_64" goto :amd64
+if /i "%1" == "x64" goto :amd64
+
 
 echo Invalid argument: '%1'
 exit -1
