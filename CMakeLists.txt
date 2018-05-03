@@ -10,6 +10,7 @@ if ("${TARGET_CPU}" STREQUAL "amd64")
 
     set_property (GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS FALSE)
     set_property (GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS TRUE)
+    endif ()
     
     if ("${TARGET_CPU}" STREQUAL "x86_64")
     set (CMAKE_SIZEOF_VOID_P 8)
@@ -22,6 +23,7 @@ if ("${TARGET_CPU}" STREQUAL "amd64")
 
     set_property (GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS FALSE)
     set_property (GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS TRUE)
+    endif ()
 
     if (GCC)
         set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32")
