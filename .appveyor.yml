@@ -12,10 +12,10 @@ shallow_clone: true              # копируем только последн�
 matrix:
     fast_finish: false           # не останавливаемся после возникновения ошибки в каком-то из заданий
 
-platform:
+#platform:
     # будем гонять CI на amd64 и x86...
-    - x64
-    - x86
+   # - x64
+   # - x86
 
 configuration:
     # ... и в дебажной, и в релизной конфигурациях ...
@@ -25,9 +25,20 @@ configuration:
 environment:
     matrix:
         # ... на трёх студиях (2010, 2012, 2015)
-        - TOOLCHAIN: msvc10
-        - TOOLCHAIN: msvc12
+        #- TOOLCHAIN: msvc10
+        #- TOOLCHAIN: msvc12
         - TOOLCHAIN: msvc14
+
+environment:
+  matrix:
+    - channel: stable
+      target: x86_64-pc-windows-msvc
+    - channel: stable
+      target: x86_64-pc-windows-gnu
+    - channel: nightly
+      target: x86_64-pc-windows-msvc
+    - channel: nightly
+      target: x86_64-pc-windows-gnu
 
 install:
     # скрипт настройки среды и установки зависимостей:
