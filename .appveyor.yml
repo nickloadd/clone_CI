@@ -40,10 +40,6 @@ build_script:
     - cmake .. %CMAKE_CONFIGURE_FLAGS%
     - cmake --build . %CMAKE_BUILD_FLAGS%
 
-test_script:
-    # скрипт тестирования проекта:
-    - ctest -C %CONFIGURATION% --output-on-failure
-
 artifacts:
     - path: <local-package-path>
       name: package_name
