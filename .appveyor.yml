@@ -9,14 +9,17 @@ image:
 configuration:
 - Release
 - Debug
+
+matrix:
+  fast_finish: true
+
 platform:
 - x64
+
 environment:
   matrix:
   - arch: Win64
-  # - arch: #does not work, Release|x64 not a valid target
-matrix:
-  fast_finish: true
+
 
 # skip unsupported combinations
 init:
