@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.11)
         
-    ("${TARGET_CPU}" STREQUAL "x86")
+    if ("${TARGET_CPU}" STREQUAL "x86")
     set (CMAKE_SIZEOF_VOID_P 4)
 
     set_property (GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS FALSE)
     set_property (GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS TRUE)
-    
+    endif ()
     
 
     if (GCC)
