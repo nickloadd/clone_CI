@@ -8,7 +8,14 @@ configuration: Debug, Release
 
 platform: Any CPU
 
+environment:
+    matrix:
+        - TOOLCHAIN: msvc14
+        - TOOLCHAIN: msvc15
+
 build:
+
+  parallel: true
 
   verbosity: minimal
 
