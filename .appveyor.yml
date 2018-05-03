@@ -14,8 +14,8 @@ matrix:
 
 #platform:
     # будем гонять CI на amd64 и x86...
-   # - x64
-    - x86
+    - x64
+   # - x86
     - x86_64
 
 configuration:
