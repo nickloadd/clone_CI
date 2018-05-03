@@ -28,7 +28,7 @@ environment:
         #- TOOLCHAIN: msvc10
         #- TOOLCHAIN: msvc12
         - TOOLCHAIN: msvc14
-  matrix:
+  #matrix:
     - channel: stable
       target: x86_64-pc-windows-msvc
     - channel: stable
