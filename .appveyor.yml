@@ -27,10 +27,6 @@ build_script:
     - cmake .. 
     - cmake --build . 
 
-artifacts:
-    - path: <local-package-path>
-      name: package_name
-
 deploy:
     # выкладываем tagged-коммиты на GitHub Releases:
     description: '$(APPVEYOR_REPO_TAG_NAME)'
