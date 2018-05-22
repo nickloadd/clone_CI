@@ -18,8 +18,8 @@ configuration:
 
 environment:
     matrix:
-        - TOOLCHAIN: MinGW
         - TOOLCHAIN: msvc14
+                   target: x86_64-pc-windows-gnu
         - TOOLCHAIN: msvc15
     
 build_script:
