@@ -3,6 +3,7 @@
 :loop
 
 if "%1" == "" goto :finalize
+if /i "%1" == "MinGW" goto :MinGW
 if /i "%1" == "msvc14" goto :msvc14
 if /i "%1" == "msvc15" goto :msvc15
 if /i "%1" == "x86" goto :x86
@@ -17,6 +18,12 @@ if /i "%1" == "i686" goto :x86
 
 echo Invalid argument: '%1'
 exit -1
+
+:MinGW
+set TOOLCHAIN=MinGW
+set CMAKE_GENERATOR=MinGW
+shift
+goto :loop
 
 :msvc14
 set TOOLCHAIN=msvc14
