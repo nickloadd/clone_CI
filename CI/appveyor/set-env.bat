@@ -31,7 +31,7 @@ shift
 goto :loop
 
 :x64
-set TARGET_CPU=x64
+set TARGET_CPU=x86_64-pc-windows-msvc
 set CMAKE_GENERATOR_SUFFIX= Win64
 set OPENSSL_DIR=C:\OpenSSL-Win64
 shift
