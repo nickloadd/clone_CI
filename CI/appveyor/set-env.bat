@@ -39,7 +39,7 @@ goto :loop
 
 :x86
 set TARGET_CPU=x86
-set CMAKE_GENERATOR_SUFFIX=
+set CMAKE_GENERATOR_SUFFIX= Win32
 set OPENSSL_DIR=C:\OpenSSL-Win32
 shift
 goto :loop
