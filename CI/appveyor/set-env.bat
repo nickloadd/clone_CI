@@ -5,7 +5,7 @@
 if "%1" == "" goto :finalize
 if /i "%1" == "msvc14" goto :msvc14
 if /i "%1" == "msvc15" goto :msvc15
-if /i "%1" == "x86" goto :x86_64-pc-windows-msvc
+if /i "%1" == "x86" goto :x86
 if /i "%1" == "i386" goto :x86_64-pc-windows-gnu
 
 
@@ -26,7 +26,7 @@ shift
 goto :loop
 
 :x86
-set TARGET_CPU=x86
+set TARGET_CPU=x86_64-pc-windows-gnu
 set CMAKE_GENERATOR_SUFFIX=
 set OPENSSL_DIR=C:\OpenSSL-Win32
 shift
