@@ -18,8 +18,8 @@ configuration:
 
 environment:
     matrix:
-        - compiler: G++
         - TOOLCHAIN: msvc14
+                 compiler: G++
         - TOOLCHAIN: msvc15
     
 build_script:
