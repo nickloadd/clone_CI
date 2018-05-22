@@ -4,8 +4,7 @@ image: Visual Studio 2017
 install:
   # Скачиваем rustup
   - appveyor DownloadFile https://sourceforge.net/projects/mingw/files/ -FileName mingw-get-setup.exe
-  - mingw-get-setup -yv --default-toolchain msvc14 --default-host x86_64-pc-windows-msvc
-
+  - mingw-get-setup -yv
 init:
     - git config --global core.autocrlf input
 
